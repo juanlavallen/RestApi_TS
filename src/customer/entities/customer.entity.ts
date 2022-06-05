@@ -9,4 +9,8 @@ export class CustomerEntity extends BaseEntity {
 
   @Column()
   dni!: number;
+
+  @OneToOne(() => UserEntity, (user) => user.customer)
+  @JoinColumn({ name: 'user_id' })
+  user!: UserEntity;
 }
