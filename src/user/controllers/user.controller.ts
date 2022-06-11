@@ -12,4 +12,14 @@ export class UserController {
       console.log(error);
     }
   }
+
+  async getUserById(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const data = await this.userService.findUserById(id);
+      res.status(200).json(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
