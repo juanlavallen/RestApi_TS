@@ -31,4 +31,25 @@ export class UserController {
       console.log(error);
     }
   }
+
+  async updateUser(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const body = req.body;
+      const updatedUser = await this.userService.updateUser(id, body);
+      res.status(200).json(updatedUser);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async deleteUser(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const deletedUser = await this.userService.deleteUser(id);
+      res.status(200).json(deletedUser);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
