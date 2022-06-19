@@ -12,4 +12,13 @@ export class CategoryController {
       console.log(error);
     }
   }
+
+  async getCategoryById(req: Request, res: Response) {
+    const { id } = req.params;
+    try {
+      const data = await this.categoryService.findCategoryById(id);
+    } catch (error) {
+      console.log(error);
+    }
+  }
 }
