@@ -5,4 +5,8 @@ export class ProductService extends BaseService<ProductEntity> {
   constructor() {
     super(ProductEntity);
   }
+
+  async findAllProducts(): Promise<ProductEntity[]> {
+    return (await this.repository).find();
+  }
 }
