@@ -1,4 +1,6 @@
+import { DeleteResult, UpdateResult } from 'typeorm';
 import { BaseService } from '../../config/base.service';
+import { ProductDto } from '../dto/product.dto';
 import { ProductEntity } from '../entities/product.entity';
 
 export class ProductService extends BaseService<ProductEntity> {
@@ -12,5 +14,9 @@ export class ProductService extends BaseService<ProductEntity> {
 
   async findProductById(id: string): Promise<ProductEntity | null> {
     return (await this.repository).findOneBy({ id });
+  }
+
+  async createProduct(body: ProductDto): Promise<ProductEntity> {
+    return (await this.repository).save(body);
   }
 }
