@@ -9,4 +9,8 @@ export class ProductService extends BaseService<ProductEntity> {
   async findAllProducts(): Promise<ProductEntity[]> {
     return (await this.repository).find();
   }
+
+  async findProductById(id: string): Promise<ProductEntity | null> {
+    return (await this.repository).findOneBy({ id });
+  }
 }
