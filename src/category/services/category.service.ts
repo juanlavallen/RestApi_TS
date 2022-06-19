@@ -9,4 +9,8 @@ export class CategoryService extends BaseService<CategoryEntity> {
   async findAllCategories(): Promise<CategoryEntity[]> {
     return (await this.repository).find();
   }
+
+  async findCategoryById(id: string): Promise<CategoryEntity | null> {
+    return (await this.repository).findOneBy({ id });
+  }
 }
