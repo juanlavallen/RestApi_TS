@@ -1,4 +1,4 @@
-import { UpdateResult } from 'typeorm';
+import { DeleteResult, UpdateResult } from 'typeorm';
 import { BaseService } from '../../config/base.service';
 import { CategoryDto } from '../dto/category.dto';
 import { CategoryEntity } from '../entities/category.entity';
@@ -22,5 +22,9 @@ export class CategoryService extends BaseService<CategoryEntity> {
 
   async updateCategory(id: string, data: CategoryDto): Promise<UpdateResult> {
     return (await this.repository).update(id, data);
+  }
+
+  async deleteCategory(id: string): Promise<DeleteResult> {
+    return (await this.repository).delete({ id });
   }
 }
