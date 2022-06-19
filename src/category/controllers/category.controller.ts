@@ -17,6 +17,16 @@ export class CategoryController {
     const { id } = req.params;
     try {
       const data = await this.categoryService.findCategoryById(id);
+      res.status(200).json(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  async createCategory(req: Request, res: Response) {
+    try {
+      const data = await this.categoryService.createCategory(req.body);
+      res.status(201).json(data);
     } catch (error) {
       console.log(error);
     }
