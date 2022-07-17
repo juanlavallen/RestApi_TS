@@ -20,4 +20,20 @@ export class PurchaseProductController {
       return this.httpResponse.Error(res, error);
     }
   }
+
+  async getPurchaseProductById(req: Request, res: Response) {
+    try {
+      const { id } = req.params;
+      const data = await this.purchaseProductService.findPurchaseProductById(
+        id
+      );
+      if (!data) {
+        return this.httpResponse.NotFound(res, 'No se encontro la data');
+      }
+      return this.httpResponse.Ok(res, data);
+    } catch (error) {
+      console.log(error);
+      return this.httpResponse.Error(res, error);
+    }
+  }
 }
