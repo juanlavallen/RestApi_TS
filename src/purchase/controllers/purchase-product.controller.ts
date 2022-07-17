@@ -36,4 +36,16 @@ export class PurchaseProductController {
       return this.httpResponse.Error(res, error);
     }
   }
+
+  async createPurchaseProduct(req: Request, res: Response) {
+    try {
+      const data = await this.purchaseProductService.createPurchaseProduct(
+        req.body
+      );
+      return this.httpResponse.Ok(res, data);
+    } catch (error) {
+      console.log(error);
+      return this.httpResponse.Error(res, error);
+    }
+  }
 }
